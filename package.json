@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.13",
+    "@babel/preset-env": "^7.18.10",
+    "babel-loader": "^8.2.5",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.10.0"
+  },
+  "scripts": {
+    "serve": "npx webpack serve --config webpack.config.js",
+    "build": "npx webpack build --config webpack.config.js",
+    "build-prod": "npx webpack build --config webpack.prod.js",
+    "start": "concurrently --kill-others \"npm run build\" \"npm run serve\""
+  }
+}
