@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 
 export class Viewer {
 
@@ -20,14 +21,22 @@ export class Viewer {
         this.renderer.setSize( window.innerWidth, window.innerHeight );
         document.body.appendChild( this.renderer.domElement );
 
-        const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-        const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-        const cube = new THREE.Mesh( geometry, material );
-        this.scene.add( cube );
+        const ambientLight = new THREE.AmbientLight( 0xffffff );
+        this.scene.add( ambientLight );
+
+        const pointLight = new THREE.PointLight( 0xffffff, 15 );
+        this.camera.add( pointLight );
 
         this.camera.position.z = 5;
         
         this.animate();
+    }
+
+    public async loadObjAsync(path: string): Promise<void> {
+        let loader = new OBJLoader();
+        let obj = await loader.loadAsync(path);
+
+       this.scene.add(obj);
     }
 
     
