@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: path.join(__dirname, 'app', 'index'),
+  entry: path.join(__dirname, 'app', 'viewer'),
   watch: true,
   module: {
     rules: [

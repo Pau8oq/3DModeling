@@ -1,4 +1,4 @@
-import { Example } from './dist/bundle.js';
+import { Viewer } from './dist/bundle.js';
 
-const exampleInstance = new Example();
-exampleInstance.greet();
+const viewer = new Viewer();
+viewer.init();
