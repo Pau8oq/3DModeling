@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
-
+import { CustomObjLoader } from './customObjLoader';
 export class Viewer {
 
     private renderer: THREE.WebGLRenderer;
@@ -32,6 +32,11 @@ export class Viewer {
         this.animate();
     }
 
+    public async loadFileAsync(path: string): Promise<void>{
+        let loader = new CustomObjLoader();
+        await loader.readJsonAsync(path, this.scene);
+    }
+
     public async loadObjAsync(path: string): Promise<void> {
         let loader = new OBJLoader();
         let obj = await loader.loadAsync(path);
@@ -39,10 +44,11 @@ export class Viewer {
        this.scene.add(obj);
     }
 
-    
     private animate(): void{
         this.controls.update();
         this.renderer.render( this.scene, this.camera );
         requestAnimationFrame(this.animate.bind(this));
     }
+
+
 }

@@ -7,6 +7,7 @@
   "devDependencies": {
     "@babel/core": "^7.18.13",
     "@babel/preset-env": "^7.18.10",
+    "@types/node": "^20.11.19",
     "babel-loader": "^8.2.5",
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",
